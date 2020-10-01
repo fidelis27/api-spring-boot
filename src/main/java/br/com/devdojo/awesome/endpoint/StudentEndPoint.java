@@ -33,7 +33,7 @@ public class StudentEndPoint {
     public ResponseEntity<?> listAll(Pageable pageable) {
         //System.out.println("data:"+dateUtil.formatLocalDataTimeToDatabaseStyle(LocalDateTime.now()));
 
-        return new ResponseEntity<>(studentDAO.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(studentDAO.findAll(pageable), HttpStatus.OK);
     }
 
     //@RequestMapping(method = RequestMethod.GET, path ="/{id}")
