@@ -18,6 +18,7 @@ import javax.validation.Valid;
 
 import java.util.Optional;
 
+//RestController, em comparacao com Controller, adiciona automaticamente a notacao ResponseBody para transformar para JSON
 @RestController
 @RequestMapping("v1")
 public class StudentEndPoint {
@@ -29,15 +30,16 @@ public class StudentEndPoint {
     }
 
     //@RequestMapping(method = RequestMethod.GET)
-    @GetMapping(path = "students")
+    @GetMapping(path = "protected/students")
     public ResponseEntity<?> listAll(Pageable pageable) {
+        System.out.println(studentDAO.findAll());
         //System.out.println("data:"+dateUtil.formatLocalDataTimeToDatabaseStyle(LocalDateTime.now()));
 
         return new ResponseEntity<>(studentDAO.findAll(pageable), HttpStatus.OK);
     }
 
     //@RequestMapping(method = RequestMethod.GET, path ="/{id}")
-    @GetMapping(path = "students/{id}")
+    @GetMapping(path = "protected/students/{id}")
     public ResponseEntity<?> getStudentById(@PathVariable("id") Long id,
                                             @AuthenticationPrincipal UserDetails userDetails) {
         System.out.println(userDetails);
@@ -48,7 +50,7 @@ public class StudentEndPoint {
         return new ResponseEntity<>(student, HttpStatus.OK);
     }
 
-    @GetMapping(path = "students/findByName/{name}")
+    @GetMapping(path = "protected/students/findByName/{name}")
     public ResponseEntity<?> FindStudentByName(@PathVariable String name) {
         return new ResponseEntity<>(studentDAO.findByNameIgnoreCaseContaining(name), HttpStatus.OK);
     }

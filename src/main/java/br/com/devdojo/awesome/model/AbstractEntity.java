@@ -10,7 +10,7 @@ import java.util.Objects;
 public class AbstractEntity implements Serializable {
     @Id
     @GeneratedValue
-    private Long id;
+    protected Long id;
 
     @Override
     public boolean equals(Object o) {
