@@ -1,5 +1,6 @@
 package br.com.devdojo.awesome.javaclient;
 
+import br.com.devdojo.awesome.handler.RestResponseExecpetionHandler;
 import br.com.devdojo.awesome.model.PageableResponse;
 import br.com.devdojo.awesome.model.Student;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -13,11 +14,13 @@ public class JavaClientDAO {
     RestTemplate restTemplate = new RestTemplateBuilder()
             .rootUri("http://localhost:8080/v1/students")
             .basicAuthentication("carol", "thiago27")
+            .errorHandler(new RestResponseExecpetionHandler())
             .build();
 
     RestTemplate restTemplateAdmin = new RestTemplateBuilder()
             .rootUri("http://localhost:8080/v1/admin/students")
             .basicAuthentication("carol2","thiago27")
+            .errorHandler(new RestResponseExecpetionHandler())
             .build();
 
     public Student findById(long id) {
@@ -53,6 +56,7 @@ public class JavaClientDAO {
     }
 
     public void delete (int id) {
+
         restTemplateAdmin.delete("/{id}", id);
     }
     private static HttpHeaders createJSONHeader() {
