@@ -14,13 +14,13 @@ public class JavaSpringClientTest {
 
 
         //metodo POST
-        Student student = new Student();
-        student.setName("rfa fidelis 2");
-        student.setEmail("thiago@gmail.com");
+        Student student = new Student("","thiago@gmail.com");
+//        student.setName();
+//        student.setEmail();
         student.setId(68L);
-        System.out.println(dao.findById(61));
+        //System.out.println(dao.findById(61));
         //System.out.println(dao.listAll());
-        //System.out.println(dao.save(studentPost));
+        System.out.println(dao.save(student));
         //dao.update(student);
         //dao.delete(61);
 

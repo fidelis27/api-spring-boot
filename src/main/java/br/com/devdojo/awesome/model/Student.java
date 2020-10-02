@@ -11,7 +11,7 @@ public class Student extends AbstractEntity {
     @NotEmpty(message = "O campo nome do estudante é obrigatório!")
     private String name;
     @NotEmpty(message = "O campo email é obrigatório!")
-    @Email
+    @Email(message = "O email deve ser válido")
     private String email;
 
     @Override
@@ -35,6 +35,13 @@ public class Student extends AbstractEntity {
     }
 
     public void setEmail(String email) {
+        this.email = email;
+    }
+//    public Student () {
+//    }
+
+    public Student(@NotEmpty(message = "O campo nome do estudante é obrigatório!") String name, @NotEmpty(message = "O campo email é obrigatório!") @Email(message = "O email deve ser válido")String email) {
+        this.name = name;
         this.email = email;
     }
 }
