@@ -73,7 +73,7 @@ public class StudentRespositoryTest {
 
         List<Student> studentList = studentRepository.findByNameIgnoreCaseContaining("thiago");
 
-        assertThat(studentList.size()).isEqualTo(48);
+        assertThat(studentList.size()).isEqualTo(2);
 
     }
 
